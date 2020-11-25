@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinatorLayout"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/respeck_status_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_marginRight="20px"
+            android:text="Respeck status: Disconnected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="I want to"
+            app:layout_constraintBottom_toTopOf="@+id/recognition_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/record_button"
+            android:layout_width="550px"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="#03A9F4"
+            android:text="Record data"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/live_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/recognition_button"
+            android:layout_width="550px"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="#03A9F4"
+            android:text="Real-time Recognition"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/record_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <Button
+            android:id="@+id/live_button"
+            android:layout_width="550px"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="#03A9F4"
+            android:text="Watch live processing"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/ble_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/ble_button"
+            android:layout_width="550px"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="573dp"
+            android:layout_marginEnd="101dp"
+            android:layout_marginBottom="20dp"
+            android:background="#03A9F4"
+            android:text="Connect respeck"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
