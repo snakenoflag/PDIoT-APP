@@ -7,234 +7,212 @@
     android:background="#FFFFFF"
     tools:context=".RecordingActivity">
 
-    <TextView
-        android:id="@+id/result_text4"
-        android:layout_width="94dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="2dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/result_text3"
-        app:layout_constraintTop_toTopOf="@+id/result_text3" />
-
-    <TextView
-        android:id="@+id/result_text5"
-        android:layout_width="94dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="2dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/result_text4"
-        app:layout_constraintTop_toTopOf="@+id/result_text4" />
-
-    <LinearLayout
-        android:id="@+id/sensor_position_side_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="649dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_record_respeck"
-        tools:visibility="visible">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="81dp">
 
         <LinearLayout
-            android:id="@+id/sensor_position_container"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/sensor_position_label"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:paddingStart="10dp"
-                android:text="Sensor position" />
+                android:layout_height="1041dp"
+                android:background="#FFFFFF"
+                tools:context=".RecordingActivity">
 
-            <Spinner
-                android:id="@+id/sensor_position_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/result_text5"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:text="Result"
+                    android:textAlignment="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/result_bar5"
+                    app:layout_constraintEnd_toEndOf="@+id/result_bar5"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/result_bar5" />
+
+                <com.specknet.pdiotapp.RingProgressBar
+                    android:id="@+id/result_bar5"
+                    android:layout_width="135dp"
+                    android:layout_height="207dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/result_bar4"
+                    app:layout_constraintTop_toBottomOf="@+id/result_text4"
+                    app:rTextColor="#03A9F4" />
+
+                <com.specknet.pdiotapp.RingProgressBar
+                    android:id="@+id/result_bar4"
+                    android:layout_width="135dp"
+                    android:layout_height="207dp"
+                    android:layout_marginTop="260dp"
+                    app:layout_constraintEnd_toStartOf="@+id/result_bar5"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    app:rTextColor="#03A9F4" />
+
+                <TextView
+                    android:id="@+id/result_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:text="Result"
+                    android:textAlignment="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/result_bar2"
+                    app:layout_constraintEnd_toEndOf="@+id/result_bar2"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/result_bar2" />
+
+                <com.specknet.pdiotapp.RingProgressBar
+                    android:id="@+id/result_bar3"
+                    android:layout_width="135dp"
+                    android:layout_height="207dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/result_bar2"
+                    app:layout_constraintTop_toBottomOf="@+id/result_text2"
+                    app:rTextColor="#468799" />
+
+                <TextView
+                    android:id="@+id/result_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:text="Result"
+                    android:textAlignment="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/result_bar4"
+                    app:layout_constraintEnd_toEndOf="@+id/result_bar4"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/result_bar4" />
+
+                <TextView
+                    android:id="@+id/result_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:text="Result"
+                    android:textAlignment="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/result_bar3"
+                    app:layout_constraintEnd_toEndOf="@+id/result_bar3"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/result_bar3" />
+
+                <Button
+                    android:id="@+id/stop_recognition_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="#03A9F4"
+                    android:text="Stop"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/start_recognition_button"
+                    app:layout_constraintTop_toTopOf="@+id/start_recognition_button" />
+
+                <Button
+                    android:id="@+id/start_recognition_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="#03A9F4"
+                    android:text="Start"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintEnd_toStartOf="@+id/stop_recognition_button"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/countup_container" />
+
+                <!--  Sensor position  -->
+
+
+                <LinearLayout
+                    android:id="@+id/countup_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/count_up_timer_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time elapsed: 00:00" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/result_text"
+                    android:layout_width="364dp"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="200dp"
+                    android:text="Result"
+                    android:textAlignment="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/result_bar" />
+
+                <com.specknet.pdiotapp.RingProgressBar
+                    android:id="@+id/result_bar"
+                    android:layout_width="174dp"
+                    android:layout_height="232dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/divider"
+                    app:rProgressColor="#1886F7"
+                    app:rRingColor="#FFFFFF"
+                    app:rTextColor="#1886F7" />
+
+                <com.specknet.pdiotapp.RingProgressBar
+                    android:id="@+id/result_bar2"
+                    android:layout_width="135dp"
+                    android:layout_height="207dp"
+                    android:layout_marginTop="108dp"
+                    app:layout_constraintEnd_toStartOf="@+id/result_bar3"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/result_bar"
+                    app:rTextColor="#03A9F4" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="150dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintTop_toTopOf="@+id/countup_container" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/result_text" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/sensor_side_container"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
-            <!--  Sensor side  -->
-            <TextView
-                android:id="@+id/sensor_side_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:paddingStart="10dp"
-                android:text="Sensor side" />
-
-            <Spinner
-                android:id="@+id/sensor_side_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/stop_recognition_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Stop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/start_recognition_button"
-        app:layout_constraintTop_toTopOf="@+id/start_recognition_button" />
-
-    <Button
-        android:id="@+id/start_recognition_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:text="Start"
-        app:layout_constraintEnd_toStartOf="@+id/stop_recognition_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar1" />
-
-    <TextView
-        android:id="@+id/title_record_respeck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Recognition Respeck Data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--  Sensor position  -->
-
-
-    <LinearLayout
-        android:id="@+id/countup_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/count_up_timer_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time elapsed: 00:00" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/result_text"
-        android:layout_width="361dp"
-        android:layout_height="36dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensor_position_side_container" />
-
-    <TextView
-        android:id="@+id/result_text2"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="149dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar1"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar1"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar1"
-        app:layout_constraintTop_toBottomOf="@+id/result_bar" />
-
-    <TextView
-        android:id="@+id/result_text3"
-        android:layout_width="94dp"
-        android:layout_height="39dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar2"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar1"
-        app:layout_constraintTop_toTopOf="@+id/result_text2" />
-
-    <com.specknet.pdiotapp.RingProgressBar
-        android:id="@+id/result_bar"
-        android:layout_width="174dp"
-        android:layout_height="232dp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_text"
-        app:rProgressColor="#9C27B0"
-        app:rRingColor="#FFFFFF" />
-
-    <com.specknet.pdiotapp.RingProgressBar
-        android:id="@+id/progress_bar1"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/progress_bar2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_bar" />
-
-    <com.specknet.pdiotapp.RingProgressBar
-        android:id="@+id/progress_bar2"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toStartOf="@+id/progress_bar3"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar1"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar1" />
-
-    <com.specknet.pdiotapp.RingProgressBar
-        android:id="@+id/progress_bar3"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/progress_bar4"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar2"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar2" />
-
-    <com.specknet.pdiotapp.RingProgressBar
-        android:id="@+id/progress_bar4"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar3"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar3" />
-
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

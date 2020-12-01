@@ -33,18 +33,21 @@ class RecognitionActivity : AppCompatActivity() {
 
 
 
-    lateinit var sensorPositionSpinner: Spinner
-    lateinit var sensorSideSpinner: Spinner
     lateinit var startRecognitionButton: Button
     lateinit var stopRecognitionButton: Button
     lateinit var progressBar: RingProgressBar
-    lateinit var progressBar1: RingProgressBar
     lateinit var progressBar2: RingProgressBar
     lateinit var progressBar3: RingProgressBar
     lateinit var progressBar4: RingProgressBar
+    lateinit var progressBar5: RingProgressBar
 
 
     lateinit var resultText: TextView
+    lateinit var resultText2: TextView
+    lateinit var resultText3: TextView
+    lateinit var resultText4: TextView
+    lateinit var resultText5: TextView
+
     lateinit var timer: TextView
     lateinit var countUpTimer: CountUpTimer
 
@@ -52,12 +55,9 @@ class RecognitionActivity : AppCompatActivity() {
     lateinit var respeckReceiver: BroadcastReceiver
     lateinit var looper: Looper
 
-    var seq = 0
 
     val filterTest = IntentFilter(Constants.ACTION_INNER_RESPECK_BROADCAST)
 
-    var sensorPosition = ""
-    var sensorSide = ""
     val activityType: Array<String> = arrayOf("Climbing stairs",
         "Descending stairs",
         "Desk work",
@@ -92,30 +92,37 @@ class RecognitionActivity : AppCompatActivity() {
     var models:HashMap<String,Interpreter> = HashMap()
     lateinit var output: Array<FloatArray>
     val POSITION = "Wrist_Right"
-    var mProgress = 0
-    var mProgress1 = 0
-    var mProgress2 = 0
-    var mProgress3 = 0
-    var mProgress4 = 0
-    var xprogress = 0
-    var nprogress = 0
+    var mProgress = 0f
+    var mProgress2 = 0f
+    var mProgress3 = 0f
+    var mProgress4 = 0f
+    var mProgress5 = 0f
+    var xProgress = 0f
+    var xProgress2 = 0f
+    var xProgress3 = 0f
+    var xProgress4 = 0f
+    var xProgress5 = 0f
+
 
     lateinit var frequencies: ArrayList<Long>
     lateinit var frequenciesAppend: ArrayList<Long>
 
-    var lastProcessedMinuteAppend = -1L
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recognition)
 
-        setupSpinners()
 
         setupBars()
 
         setupButtons()
 
         resultText = findViewById(R.id.result_text)
+        resultText2 = findViewById(R.id.result_text2)
+        resultText3 = findViewById(R.id.result_text3)
+        resultText4 = findViewById(R.id.result_text4)
+        resultText5 = findViewById(R.id.result_text5)
 
 
 
@@ -134,7 +141,7 @@ class RecognitionActivity : AppCompatActivity() {
         }
         frequencies = ArrayList<Long>()
         frequenciesAppend = ArrayList()
-        var lastProcessedMinute = -1L
+
         var timeCounter = 0
 
 
@@ -154,7 +161,6 @@ class RecognitionActivity : AppCompatActivity() {
                     val x = intent.getFloatExtra(Constants.EXTRA_RESPECK_LIVE_X, 0f)
                     val y = intent.getFloatExtra(Constants.EXTRA_RESPECK_LIVE_Y, 0f)
                     val z = intent.getFloatExtra(Constants.EXTRA_RESPECK_LIVE_Z, 0f)
-                    val ts = intent.getLongExtra(Constants.EXTRA_INTERPOLATED_TS, 0L)
 
                     if (x == last_x && y == last_y && z == last_z) {
                         Log.e("Debug", "DUPLICATE VALUES")
@@ -182,14 +188,22 @@ class RecognitionActivity : AppCompatActivity() {
                     }
                     if((timeCounter == 1 && startFlag == 1) && modelFlag == 1 ) {
                         timeCounter = 0
-                        nprogress = mProgress
                         predict()
                         inputData.clear()
 
                     }
                     if (startFlag==1){
-                        xprogress = mProgress - progressBar.progress
-                        progressBar.setProgress (mProgress - xprogress/15*(14-step))
+                        xProgress = mProgress - progressBar.progress.toFloat()
+                        xProgress2 = mProgress2 - progressBar2.progress.toFloat()
+                        xProgress3 = mProgress3 - progressBar3.progress.toFloat()
+                        xProgress4 = mProgress4 - progressBar4.progress.toFloat()
+                        xProgress5 = mProgress5 - progressBar5.progress.toFloat()
+
+                        progressBar.setProgress (mProgress - xProgress/windowSize*(windowSize-1-step))
+                        progressBar2.setProgress (mProgress2 - xProgress2/windowSize*(windowSize-1-step))
+                        progressBar3.setProgress (mProgress3 - xProgress3/windowSize*(windowSize-1-step))
+                        progressBar4.setProgress (mProgress4 - xProgress4/windowSize*(windowSize-1-step))
+                        progressBar5.setProgress (mProgress5 - xProgress5/windowSize*(windowSize-1-step))
                     }
 
 
@@ -220,55 +234,6 @@ class RecognitionActivity : AppCompatActivity() {
 
     }
 
-    private fun setupSpinners() {
-        sensorPositionSpinner = findViewById(R.id.sensor_position_spinner)
-
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.sensor_position_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            sensorPositionSpinner.adapter = adapter
-        }
-
-        sensorPositionSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, viwq: View, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position).toString()
-                sensorPosition = selectedItem
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                sensorPosition = "Chest"
-            }
-        }
-
-        sensorSideSpinner = findViewById(R.id.sensor_side_spinner)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.sensor_side_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            sensorSideSpinner.adapter = adapter
-        }
-
-        sensorSideSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, viwq: View, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position).toString()
-                sensorSide = selectedItem
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                sensorSide = "Left"
-            }
-        }
-
-
-
-
-
-    }
 
     private fun setupButtons() {
         startRecognitionButton = findViewById(R.id.start_recognition_button)
@@ -304,11 +269,11 @@ class RecognitionActivity : AppCompatActivity() {
 
     private fun setupBars(){
         progressBar = findViewById(R.id.result_bar);
-        progressBar1 = findViewById(R.id.progress_bar1);
-        progressBar2 = findViewById(R.id.progress_bar2);
-        progressBar3 = findViewById(R.id.progress_bar3);
-        progressBar4 = findViewById(R.id.progress_bar4);
-        progressBar.post { progressBar.setProgress(25) }
+        progressBar2 = findViewById(R.id.result_bar2);
+        progressBar3 = findViewById(R.id.result_bar3);
+        progressBar4 = findViewById(R.id.result_bar4);
+        progressBar5 = findViewById(R.id.result_bar5);
+
     }
 
     private fun startRecognition() {
@@ -328,27 +293,41 @@ class RecognitionActivity : AppCompatActivity() {
 
     private fun predict(){
         var sum:Float = 0F
-        var outputMap:HashMap<String,Float> = HashMap<String,Float> ()
+        var outputMap:HashMap<Float,String> = HashMap()
         for (ACTIVITY in activityType) {
             models[ACTIVITY]?.run(inputData, output)
-            outputMap.put(ACTIVITY,output[0][0])
+            outputMap.put(output[0][0],ACTIVITY)
             sum = sum + output[0][0]
         }
+        val keys:FloatArray = outputMap.keys.toFloatArray()
+        Arrays.sort(keys)
 
         Log.e("Result", "output:" +outputMap)
 
 
-        mProgress = getConfidence(outputMap.maxBy{it.value}!!.value,sum)
-        Log.e("Debug1","confidence:"+mProgress)
-        resultText.text = outputMap?.maxBy{it.value}?.key
-        Log.e("Debug1","result:" + outputMap?.maxBy{it.value}?.key)
+        mProgress = getConfidence(keys[13],sum)
+        resultText.text = outputMap.get(keys[13])
+
+        Log.e("Result", "mProgress:" +keys[13])
+        mProgress2 = getConfidence(keys[12],sum)
+        resultText2.text = outputMap.get(keys[12])
+
+        mProgress3 = getConfidence(keys[11],sum)
+        resultText3.text = outputMap.get(keys[11])
+
+        mProgress4 = getConfidence(keys[10],sum)
+        resultText4.text = outputMap.get(keys[10])
+
+        mProgress5 = getConfidence(keys[9],sum)
+        resultText5.text = outputMap.get(keys[9])
+
 
     }
 
 
-    private fun getConfidence(score:Float,sum:Float):Int{
+    private fun getConfidence(score:Float,sum:Float):Float{
         var confidence = score/sum
-        return (10000*(confidence)).toInt()
+        return (10000*(confidence))
     }
 
 

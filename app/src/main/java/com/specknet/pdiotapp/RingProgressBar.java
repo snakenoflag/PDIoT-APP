@@ -53,7 +53,7 @@ public class RingProgressBar extends View {
     /**
      * 当前进度
      */
-    private int progress;
+    private float progress;
     /**
      * 是否显示中间的进度
      */
@@ -128,10 +128,11 @@ public class RingProgressBar extends View {
         }
         //4.画进度百分比
         if (textIsVisibility) {
+            paint.setStyle(Paint.Style.FILL);
             paint.setStrokeWidth(0);
             paint.setColor(textColor);
             paint.setTextSize(getWidth()/4);
-            paint.setTypeface(Typeface.MONOSPACE); //设置字体
+            paint.setTypeface(Typeface.DEFAULT); //设置字体
             int percent = (int) (((float) progress / (float) max) * 100); //中间的进度百分比，先转换成float在进行除法运算，不然都为0
             float textWidth = paint.measureText(percent + "%");   //测量字体宽度，我们需要根据字体的宽度设置在圆环中间
             canvas.drawText(percent + "%", centre - textWidth / 2, centre + textSize / 2, paint); //画出进度百分比
@@ -144,7 +145,7 @@ public class RingProgressBar extends View {
      *
      * @param progress
      */
-    public synchronized void setProgress(int progress) {
+    public synchronized void setProgress(float progress) {
         if (progress < 0) {
             throw new IllegalArgumentException("progress not less than 0");
         }
@@ -153,7 +154,7 @@ public class RingProgressBar extends View {
         }
         if (progress <= max) {
             int count = 0;
-            int gap = progress-this.progress;
+            float gap = progress-this.progress;
             while(count<10){
                 count++;
                 this.progress = progress-gap/10*(10-count);
@@ -171,7 +172,7 @@ public class RingProgressBar extends View {
 
     }
 
-    public synchronized int getProgress() {
+    public synchronized float getProgress() {
       return this.progress;
 
     }
